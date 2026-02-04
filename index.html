@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Threat Surface Analysis - Multi-Domain Dossier</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fcfcfd;
+            color: #0f172a;
+            scroll-behavior: smooth;
+        }
+
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        .section-header {
+            border-left: 6px solid #2563eb;
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .data-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+
+        .tech-pill {
+            background: #f1f5f9;
+            color: #475569;
+            padding: 2px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid #cbd5e1;
+        }
+
+        .severity-high { color: #dc2626; font-weight: 700; }
+        .severity-medium { color: #d97706; font-weight: 700; }
+        .severity-low { color: #059669; font-weight: 700; }
+
+        table { width: 100%; font-size: 0.85rem; border-collapse: collapse; }
+        th { background: #f8fafc; text-align: left; padding: 12px; border-bottom: 2px solid #e2e8f0; color: #64748b; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.05em; }
+        td { padding: 12px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+
+        .subdomain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.5rem;
+        }
+
+        @media print {
+            .no-print { display: none; }
+            .page-break { page-break-before: always; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Global Header -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50 no-print">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <i class="fas fa-shield-virus text-blue-600 text-2xl"></i>
+                <h1 class="font-extrabold text-xl tracking-tight">CyberAudit Group Analysis</h1>
+            </div>
+            <div class="flex space-x-4">
+                <a href="#oberoi" class="text-sm font-bold text-slate-500 hover:text-blue-600">oberoirealty.com</a>
+                <a href="#threesixty" class="text-sm font-bold text-slate-500 hover:text-blue-600">threesixtywest.com</a>
+                <button onclick="window.print()" class="bg-slate-900 text-white px-4 py-2 rounded-lg text-xs font-bold"><i class="fas fa-file-pdf mr-2"></i> EXPORT</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-6 py-12 space-y-24">
+
+        <!-- ========================================== -->
+        <!-- SECTION 1: OBEROIREALTY.COM -->
+        <!-- ========================================== -->
+        <section id="oberoi" class="scroll-mt-24">
+            <div class="section-header">
+                <h2 class="text-4xl font-black text-slate-900">1. oberoirealty.com</h2>
+                <p class="text-slate-500 text-lg">Primary Corporate Infrastructure Analysis</p>
+            </div>
+
+            <!-- Stats & Tech Summary -->
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-12">
+                <div class="data-card p-6 bg-blue-50/50">
+                    <p class="text-[10px] font-bold text-blue-400 uppercase tracking-widest mb-1">Observed Assets</p>
+                    <p class="text-4xl font-black text-blue-900">7 <span class="text-lg font-normal">Live</span></p>
+                </div>
+                <div class="data-card p-6">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">SSL Coverage</p>
+                    <p class="text-4xl font-black text-slate-900">86% <span class="text-sm block text-slate-400 font-normal">6 / 7 Secured</span></p>
+                </div>
+                <div class="data-card p-6 lg:col-span-2">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Technology Distribution (Expanded)</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-pill">Drupal (14%)</span>
+                        <span class="tech-pill">Amazon ALB (14%)</span>
+                        <span class="tech-pill">Google Cloud (11%)</span>
+                        <span class="tech-pill">Cloudflare (11%)</span>
+                        <span class="tech-pill">PHP (11%)</span>
+                        <span class="tech-pill">Apache (7%)</span>
+                        <span class="tech-pill">Bootstrap</span>
+                        <span class="tech-pill">HSTS</span>
+                        <span class="tech-pill">jQuery</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subdomains List -->
+            <div class="data-card p-8 mb-12">
+                <h3 class="text-lg font-bold mb-4 flex items-center text-slate-700">
+                    <i class="fas fa-sitemap mr-3 text-blue-500"></i> Subdomain Enumeration
+                </h3>
+                <div class="subdomain-grid text-sm mono">
+                    <div class="p-2 border border-slate-100 rounded">ems.oberoirealty.com</div>
+                    <div class="p-2 border border-slate-100 rounded">filemanager.oberoirealty.com</div>
+                    <div class="p-2 border border-slate-100 rounded">itsupport.oberoirealty.com</div>
+                    <div class="p-2 border border-slate-100 rounded font-bold text-amber-600">laserfiche.oberoirealty.com</div>
+                    <div class="p-2 border border-slate-100 rounded">login.oberoirealty.com</div>
+                    <div class="p-2 border border-slate-100 rounded">lyncdiscover.oberoirealty.com</div>
+                    <div class="p-2 border border-slate-100 rounded">mail.oberoirealty.com</div>
+                    <div class="p-2 border border-slate-100 rounded">ocr.oberoirealty.com</div>
+                    <div class="p-2 border border-slate-100 rounded">pam.oberoirealty.com</div>
+                    <div class="p-2 border border-slate-100 rounded">autodiscover.oberoirealty.com</div>
+                    <div class="p-2 border border-slate-100 rounded">delivery.oberoirealty.com</div>
+                    <div class="p-2 border border-slate-100 rounded">ecm.oberoirealty.com</div>
+                </div>
+            </div>
+
+            <!-- Focused Asset Dossiers (Expanded) -->
+            <h3 class="text-xl font-bold mb-6">Technical Dossiers (Assets 1-7)</h3>
+            <div class="space-y-4 mb-12">
+                <div class="data-card bg-slate-50 p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-sm">
+                        <div class="col-span-1">
+                            <span class="block font-black text-slate-400 text-[10px] uppercase">Hostname & Port</span>
+                            <span class="font-bold">delivery.oberoirealty.com:443</span>
+                        </div>
+                        <div class="col-span-1">
+                            <span class="block font-black text-slate-400 text-[10px] uppercase">Host IP</span>
+                            <span class="mono">34.117.197.73</span>
+                        </div>
+                        <div class="col-span-2">
+                            <span class="block font-black text-slate-400 text-[10px] uppercase">Full Technology Stack</span>
+                            <p class="text-xs">Google Cloud, Google Cloud CDN, Google Cloud Trace, HSTS, HTTP/3</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="data-card bg-slate-50 p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-sm">
+                        <div class="col-span-1">
+                            <span class="block font-black text-slate-400 text-[10px] uppercase">Hostname & Port</span>
+                            <span class="font-bold">itsupport.oberoirealty.com:443</span>
+                        </div>
+                        <div class="col-span-1">
+                            <span class="block font-black text-slate-400 text-[10px] uppercase">Host IP</span>
+                            <span class="mono">162.159.140.147</span>
+                        </div>
+                        <div class="col-span-2">
+                            <span class="block font-black text-slate-400 text-[10px] uppercase">Full Technology Stack</span>
+                            <p class="text-xs">Cloudflare, Cloudflare Bot Management, Envoy, HSTS</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="data-card bg-amber-50 p-6 border-amber-200">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-sm">
+                        <div class="col-span-1">
+                            <span class="block font-black text-amber-500 text-[10px] uppercase">Hostname & Port</span>
+                            <span class="font-bold">laserfiche.oberoirealty.com:80</span>
+                        </div>
+                        <div class="col-span-1">
+                            <span class="block font-black text-amber-500 text-[10px] uppercase">SSL Status</span>
+                            <span class="font-bold text-red-600 uppercase text-[10px]">Disabled (Port 80)</span>
+                        </div>
+                        <div class="col-span-2">
+                            <span class="block font-black text-amber-500 text-[10px] uppercase">Technologies Observed</span>
+                            <p class="text-xs">Nginx, PHP: 8.1.31</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 text-center text-slate-400 text-xs italic">All 7 assets observed: delivery, oberoirealty.com (root), itsupport, laserfiche, sourcing, www, staging1.</div>
+            </div>
+
+            <!-- SSL Config Audit (CTRL-01 to CTRL-13) -->
+            <div class="data-card mb-12">
+                <div class="px-6 py-4 bg-slate-900 text-white font-bold text-sm uppercase tracking-widest">SSL Configuration Testing (CTRL-01 — CTRL-13)</div>
+                <div class="overflow-x-auto">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Control Area</th>
+                                <th>Evidence</th>
+                                <th>Security Status</th>
+                                <th>Threat Mitigated</th>
+                                <th>Recommendation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="mono font-bold text-blue-600">CTRL-01</td>
+                                <td class="font-bold">TLS Rating</td>
+                                <td>SSL Labs Rating: A; TLS 1.3 supported</td>
+                                <td class="severity-low">Secure</td>
+                                <td>Weak encryption attacks</td>
+                                <td>Maintain modern TLS posture</td>
+                            </tr>
+                            <tr>
+                                <td class="mono font-bold text-blue-600">CTRL-03</td>
+                                <td class="font-bold">Cert Validity</td>
+                                <td>Valid until 15 Apr 2026 (~2 months)</td>
+                                <td class="severity-medium">Attention Required</td>
+                                <td>Service outage / trust loss</td>
+                                <td>Renew ≥15 days before expiry</td>
+                            </tr>
+                            <tr>
+                                <td class="mono font-bold text-blue-600">CTRL-06</td>
+                                <td class="font-bold">DNS CAA</td>
+                                <td>DNS CAA: No</td>
+                                <td class="severity-medium">Acceptable Gap</td>
+                                <td>Unauthorized issuance</td>
+                                <td>Add CAA records</td>
+                            </tr>
+                            <tr>
+                                <td class="mono font-bold text-blue-600">CTRL-07</td>
+                                <td class="font-bold">No-SNI Behavior</td>
+                                <td>Presents: *.webhostbox.net (MISMATCH)</td>
+                                <td class="severity-high">High Visibility Issue</td>
+                                <td>User cert errors</td>
+                                <td>Ensure correct default vhost</td>
+                            </tr>
+                            <tr>
+                                <td class="mono font-bold text-blue-600">CTRL-11</td>
+                                <td class="font-bold">HSTS</td>
+                                <td>Strict-Transport-Security: No</td>
+                                <td class="severity-medium">Improvement Area</td>
+                                <td>SSL Stripping / MITM</td>
+                                <td>Enable HSTS with long max-age</td>
+                            </tr>
+                            <tr>
+                                <td class="mono font-bold text-blue-600">CTRL-13</td>
+                                <td class="font-bold">Known Vulnerabilities</td>
+                                <td>Heartbleed/POODLE/ROBOT: No</td>
+                                <td class="severity-low">Secure</td>
+                                <td>Memory leakage/Key recovery</td>
+                                <td>No action required</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- DNS Infrastructure -->
+            <div class="data-card mb-12">
+                <div class="px-6 py-4 bg-blue-600 text-white font-bold text-sm uppercase">Infrastructure Audit: DNS & Infrastructure</div>
+                <div class="overflow-x-auto">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>Sub-type</th>
+                                <th>Value / Provider</th>
+                                <th>Risk Level</th>
+                                <th>Observed Risk</th>
+                                <th>Recommendation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-bold">Nameserver</td>
+                                <td>NS1</td>
+                                <td class="mono">ns-1013.awsdns-62.net</td>
+                                <td class="severity-low">Low</td>
+                                <td>Managed DNS risk</td>
+                                <td>Enable DNSSEC + monitoring</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">Nameserver</td>
+                                <td>NS2</td>
+                                <td class="mono">ns-1204.awsdns-22.org</td>
+                                <td class="severity-low">Low</td>
+                                <td>Availability risk</td>
+                                <td>Enable alerts</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">Provider</td>
+                                <td>DNS Provider</td>
+                                <td class="mono">AWS Route53</td>
+                                <td class="severity-medium">Low–Medium</td>
+                                <td>Cloud misconfiguration</td>
+                                <td>IAM hardening & MFA</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Email & Brand -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                <div class="data-card p-6">
+                    <h4 class="font-bold border-b pb-2 mb-4">Email Security Configuration</h4>
+                    <div class="space-y-4 text-sm">
+                        <div class="flex justify-between"><span>SPF Record</span><span class="severity-medium">Unknown</span></div>
+                        <div class="flex justify-between"><span>DKIM Status</span><span class="severity-medium">Unknown</span></div>
+                        <div class="flex justify-between font-black text-red-600"><span>DMARC Policy</span><span>Unknown (Risk: High)</span></div>
+                    </div>
+                </div>
+                <div class="data-card p-6">
+                    <h4 class="font-bold border-b pb-2 mb-4">Brand Protection</h4>
+                    <div class="space-y-4 text-sm">
+                        <div class="flex justify-between"><span>Typosquatting Monitoring</span><span class="severity-high">Unknown / Inactive</span></div>
+                        <div class="flex justify-between"><span>Observed Risk</span><span>Retail brand attractive to attackers</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Threat Scenarios -->
+            <div class="data-card p-8 bg-red-50/30 border-red-100">
+                <h3 class="text-xl font-bold mb-6 flex items-center text-red-900"><i class="fas fa-fire-alt mr-3"></i> Identified Threat Scenarios</h3>
+                <div class="space-y-6">
+                    <div class="p-4 bg-white rounded-lg border border-red-100">
+                        <p class="font-bold text-red-700">Registrar Vishing & Takeover</p>
+                        <p class="text-xs text-slate-500 mt-1 italic">High Likelihood | High Impact</p>
+                        <p class="text-sm mt-2">Attackers impersonate IT personnel to hijack domain registrar account using publicly exposed org data.</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-lg border border-red-100">
+                        <p class="font-bold text-red-700">Fake Offers / Brand Phishing</p>
+                        <p class="text-xs text-slate-500 mt-1 italic">High Likelihood | High Impact</p>
+                        <p class="text-sm mt-2">Retail mall context makes domain attractive for fake coupons harvesting customer credit cards.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 2: THREESIXTYWEST.COM -->
+        <!-- ========================================== -->
+        <section id="threesixty" class="scroll-mt-24 page-break">
+            <div class="section-header border-amber-500">
+                <h2 class="text-4xl font-black text-slate-900">2. threesixtywest.com</h2>
+                <p class="text-slate-500 text-lg">Project-Specific Digital Surface Analysis</p>
+            </div>
+
+            <!-- Stats & Tech Summary -->
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-12">
+                <div class="data-card p-6 bg-amber-50/50">
+                    <p class="text-[10px] font-bold text-amber-400 uppercase tracking-widest mb-1">Observed Assets</p>
+                    <p class="text-4xl font-black text-amber-900">4 <span class="text-lg font-normal">Live</span></p>
+                </div>
+                <div class="data-card p-6">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">SSL Coverage</p>
+                    <p class="text-4xl font-black text-slate-900">100% <span class="text-sm block text-slate-400 font-normal">4 / 4 Secured</span></p>
+                </div>
+                <div class="data-card p-6 lg:col-span-2">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Technology Distribution (Expanded)</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-pill">Amazon ALB (20%)</span>
+                        <span class="tech-pill">Amazon CloudFront (20%)</span>
+                        <span class="tech-pill">Drupal 9 (20%)</span>
+                        <span class="tech-pill">PHP (10%)</span>
+                        <span class="tech-pill">jQuery</span>
+                        <span class="tech-pill">HSTS</span>
+                        <span class="tech-pill">OWL Carousel</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subdomains List -->
+            <div class="data-card p-8 mb-12">
+                <h3 class="text-lg font-bold mb-4 flex items-center text-slate-700">
+                    <i class="fas fa-sitemap mr-3 text-amber-500"></i> Subdomain Enumeration
+                </h3>
+                <div class="subdomain-grid text-sm mono">
+                    <div class="p-2 border border-slate-100 rounded">autodiscover.threesixtywest.com</div>
+                    <div class="p-2 border border-slate-100 rounded font-bold text-amber-600">mail.threesixtywest.com</div>
+                    <div class="p-2 border border-slate-100 rounded">staging1.threesixtywest.com</div>
+                    <div class="p-2 border border-slate-100 rounded">threesixtywest.com (root)</div>
+                    <div class="p-2 border border-slate-100 rounded">www.threesixtywest.com</div>
+                </div>
+            </div>
+
+            <!-- Focused Asset Dossiers (Expanded) -->
+            <h3 class="text-xl font-bold mb-6">Technical Dossiers (Assets 1-4)</h3>
+            <div class="space-y-4 mb-12">
+                <div class="data-card bg-slate-50 p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-sm">
+                        <div class="col-span-1">
+                            <span class="block font-black text-slate-400 text-[10px] uppercase">Hostname & Port</span>
+                            <span class="font-bold">www.threesixtywest.com:443</span>
+                        </div>
+                        <div class="col-span-1">
+                            <span class="block font-black text-slate-400 text-[10px] uppercase">Host IP</span>
+                            <span class="mono">18.67.76.18</span>
+                        </div>
+                        <div class="col-span-2">
+                            <span class="block font-black text-slate-400 text-[10px] uppercase">Full Technology Stack</span>
+                            <p class="text-xs">Amazon CloudFront, Amazon Web Services, HSTS</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="data-card bg-slate-50 p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-sm">
+                        <div class="col-span-1">
+                            <span class="block font-black text-slate-400 text-[10px] uppercase">Hostname & Port</span>
+                            <span class="font-bold">staging1.threesixtywest.com:443</span>
+                        </div>
+                        <div class="col-span-1">
+                            <span class="block font-black text-slate-400 text-[10px] uppercase">Host IP</span>
+                            <span class="mono">3.167.88.5</span>
+                        </div>
+                        <div class="col-span-2">
+                            <span class="block font-black text-slate-400 text-[10px] uppercase">Full Technology Stack</span>
+                            <p class="text-xs">Amazon ALB, Amazon CloudFront, Amazon Web Services, Drupal:9, HSTS, OWL Carousel, PHP, jQuery</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="data-card bg-amber-50 p-6 border-amber-200">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-sm">
+                        <div class="col-span-1">
+                            <span class="block font-black text-amber-500 text-[10px] uppercase">Hostname & Port</span>
+                            <span class="font-bold">mail.threesixtywest.com:443</span>
+                        </div>
+                        <div class="col-span-1">
+                            <span class="block font-black text-amber-500 text-[10px] uppercase">Infrastructure Note</span>
+                            <span class="text-xs italic">Shared Hosting Environment observed</span>
+                        </div>
+                        <div class="col-span-2">
+                            <span class="block font-black text-amber-500 text-[10px] uppercase">Technologies Observed</span>
+                            <p class="text-xs">Apache, TLS 1.2 (Legacy Support)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DNS Infrastructure -->
+            <div class="data-card mb-12">
+                <div class="px-6 py-4 bg-amber-600 text-white font-bold text-sm uppercase">Infrastructure Audit: DNS & Infrastructure</div>
+                <div class="overflow-x-auto">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>Sub-type</th>
+                                <th>Value / Provider</th>
+                                <th>Risk Level</th>
+                                <th>Observed Risk</th>
+                                <th>Recommendation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-bold">Nameserver</td>
+                                <td>NS1</td>
+                                <td class="mono">ns1.ornate.in</td>
+                                <td class="severity-medium">Medium</td>
+                                <td>Third-party DNS dependency</td>
+                                <td>Assess provider security</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">Nameserver</td>
+                                <td>NS3</td>
+                                <td class="mono">ns3.ornate.in</td>
+                                <td class="severity-medium">Medium</td>
+                                <td>Cache poisoning / DNSSEC disabled</td>
+                                <td>Enable DNSSEC</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">Provider</td>
+                                <td>DNS Provider</td>
+                                <td class="mono">ornate.in</td>
+                                <td class="severity-high">Medium-High</td>
+                                <td>Supply-chain compromise risk</td>
+                                <td>Vendor risk assessment required</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Email & Brand -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                <div class="data-card p-6">
+                    <h4 class="font-bold border-b pb-2 mb-4">Email Security Configuration</h4>
+                    <div class="space-y-4 text-sm">
+                        <div class="flex justify-between"><span>SPF Record</span><span class="severity-medium">Unknown</span></div>
+                        <div class="flex justify-between font-black text-amber-600"><span>DMARC Policy</span><span>No Visible Policy (Risk: High)</span></div>
+                        <div class="flex justify-between"><span>Observed Posture</span><span>Authentication unclear / CEO Fraud risk</span></div>
+                    </div>
+                </div>
+                <div class="data-card p-6">
+                    <h4 class="font-bold border-b pb-2 mb-4">Brand Protection</h4>
+                    <div class="space-y-4 text-sm">
+                        <div class="flex justify-between"><span>Typosquatting Monitoring</span><span class="severity-medium">Unknown</span></div>
+                        <div class="flex justify-between"><span>Observed Risk</span><span>Lookalike domain abuse possible</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Threat Scenarios -->
+            <div class="data-card p-8 bg-amber-50/30 border-amber-100">
+                <h3 class="text-xl font-bold mb-6 flex items-center text-amber-900"><i class="fas fa-biohazard mr-3"></i> Identified Threat Scenarios</h3>
+                <div class="space-y-6">
+                    <div class="p-4 bg-white rounded-lg border border-amber-100">
+                        <p class="font-bold text-amber-700">Vishing & DNS Redirection</p>
+                        <p class="text-xs text-slate-500 mt-1 italic">High Likelihood | High Impact</p>
+                        <p class="text-sm mt-2">Exposed phone numbers in WHOIS allow for registrar impersonation. High risk of complete domain control loss.</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-lg border border-amber-100">
+                        <p class="font-bold text-amber-700">DNS Hijacking</p>
+                        <p class="text-xs text-slate-500 mt-1 italic">Medium Likelihood | High Impact</p>
+                        <p class="text-sm mt-2">Absence of DNSSEC on primary nameservers (ornate.in) leads to traffic and email interception.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Aggregated Risk Verdict -->
+        <section class="page-break">
+            <div class="bg-slate-900 rounded-3xl p-12 text-white shadow-2xl">
+                <h2 class="text-3xl font-black mb-6">Group Executive Verdict</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <p class="text-slate-400 uppercase font-bold text-xs tracking-widest mb-4">Immediate Hardening Required</p>
+                        <ul class="space-y-4 text-sm">
+                            <li class="flex items-start"><i class="fas fa-exclamation-triangle text-amber-500 mt-1 mr-3"></i> <span><strong>DNSSEC:</strong> Critical group-wide lack of DNSSEC, especially on <code>ornate.in</code> assets.</span></li>
+                            <li class="flex items-start"><i class="fas fa-exclamation-triangle text-amber-500 mt-1 mr-3"></i> <span><strong>Email Auth:</strong> Zero visible DMARC policies. CEO fraud and brand spoofing risk is exceptionally high.</span></li>
+                            <li class="flex items-start"><i class="fas fa-exclamation-triangle text-amber-500 mt-1 mr-3"></i> <span><strong>Registrar Safety:</strong> Exposed PII in WHOIS makes vishing attacks trivial. Mask records immediately.</span></li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-800 p-8 rounded-2xl">
+                        <p class="text-xs font-bold text-indigo-400 uppercase mb-4">Group Risk Score</p>
+                        <div class="text-6xl font-black mb-4 tracking-tighter">7.8<span class="text-2xl text-slate-500">/10</span></div>
+                        <p class="text-sm text-slate-400 font-semibold italic">Risk: Medium-High. High value corporate domains with systemic exposure points.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Appendix -->
+        <footer class="pt-12 border-t border-slate-200">
+            <div class="flex flex-col md:flex-row justify-between text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                <div>Source: Group Surface Audit OR-TSW-P12</div>
+                <div class="text-center">Classification: Internal Confidential</div>
+                <div class="text-right italic">Analysis by CyberGuard v4.2</div>
+            </div>
+        </footer>
+
+    </main>
+
+</body>
+</html>
